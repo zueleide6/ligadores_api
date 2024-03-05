@@ -4,9 +4,6 @@ const AtendimentoController = require("./controllers/AtendimentoController");
 
 const routes = express.Router();
 
-// routes.post("/sessions", SessionController.store);
-routes.post("/cnpj", processaCNPJs.processaCNPJs);
-
 routes.get("/empresa", EmpresaController.listar);
 routes.post("/empresa", EmpresaController.criar);
 routes.get("/empresa/:empresa_id", EmpresaController.visualizar);
