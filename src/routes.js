@@ -1,7 +1,6 @@
 const express = require("express");
 const EmpresaController = require("./controllers/EmpresaController");
 const AtendimentoController = require("./controllers/AtendimentoController");
-const processaCNPJs = require("./ProcessaCNPJ");
 
 const routes = express.Router();
 
