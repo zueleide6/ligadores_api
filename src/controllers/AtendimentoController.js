@@ -32,18 +32,7 @@ module.exports = {
     });
 
     return res.json(atendimento);
-  },
-
-  async excluir(req, res) {
-    const { empresa } = req.body;
-
-    let atendimento = await Conta.find({
-        empresa
-    });
-    await atendimento.deleteOne();
-    
-    return res.json(atendimento);
-  },
+  }
 
   
 };
