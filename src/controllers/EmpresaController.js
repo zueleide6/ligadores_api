@@ -45,10 +45,7 @@ const empresa = await Empresa.findOne({ cnpj }).lean(); // Use lean para eficiê
       return res.json(empresa);
   },
   async listar(req, res) {
-    //const { banco } = req.query;  Captura o banco da query string
 
-    //console.log("Banco que recebi:"+banco)
-  
     const empresas = await Empresa.find();
     return res.json(empresas);
   }
