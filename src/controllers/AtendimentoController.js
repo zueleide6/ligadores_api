@@ -8,7 +8,7 @@ module.exports = {
     const { score, status, Anotacao } = req.body;
 
     // Verifica se a empresa existe
-    const empresa = await Empresa.findById(cnpj);
+    const empresa = await Empresa.find(cnpj);
     if (!empresa) {
       return res.status(404).send({ error: "Empresa não encontrada" });
     }
