@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors());
 
 mongoose.connect(
-    "mongodb+srv://dopamina:Dopamina123@cluster0.2v3bl7g.mongodb.net/"
+    "mongodb+srv://dopamina:Dopamina123@cluster0.2v3bl7g.mongodb.net/port"
   );
   app.use(cors({
     origin: '*'
