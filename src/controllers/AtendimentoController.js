@@ -27,9 +27,7 @@ module.exports = {
   async listar(req, res) {
     const { cnpj } = req.params;
 
-    let atendimento = await Atendimento.find({
-        cnpj
-    });
+    let atendimento = await Atendimento.findOne({ cnpj })
 
     return res.json(atendimento);
   }
