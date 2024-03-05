@@ -28,8 +28,7 @@ module.exports = {
   async visualizar(req, res) {
     const { cnpj } = req.params;
 
-    try {
-      const empresa = await Empresa.findOne({ cnpj }).lean(); // Use lean para eficiência, se você não precisar de um documento do Mongoose
+const empresa = await Empresa.findOne({ cnpj }).lean(); // Use lean para eficiência, se você não precisar de um documento do Mongoose
 
       if (!empresa) {
         return res.status(404).json({ error: "Empresa não encontrada" });
@@ -44,10 +43,6 @@ module.exports = {
       empresa.ultimoAtendimento = ultimoAtendimento;
 
       return res.json(empresa);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: "Erro ao buscar empresa e atendimento" });
-    }
   },
   async listar(req, res) {
     //const { banco } = req.query;  Captura o banco da query string
