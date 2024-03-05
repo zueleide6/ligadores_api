@@ -25,7 +25,7 @@ module.exports = {
 
 
   async listar(req, res) {
-    const { cnpj } = req.param;
+    const { cnpj } = req.params;
 
     let atendimento = await Conta.find({
         cnpj
