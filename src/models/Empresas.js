@@ -16,8 +16,11 @@ const EmpresaSchema = {
   municipio: String,
   estado: String,
   atividadePrincipal: String,
-  quadroSocietario: String
-
+  quadroSocietario: String,
+  atendimentos: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Atendimento'
+  }]
 };
 
 module.exports = mongoose.model("Empresa", EmpresaSchema);
