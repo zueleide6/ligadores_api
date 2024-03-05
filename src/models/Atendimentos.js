@@ -12,4 +12,4 @@ const AtendimentoSchema = {
   Anotacao: String,
 };
 
-module.exports = mongoose.model("atendimento", AtendimentoSchema);
+module.exports = mongoose.model("Atendimento", AtendimentoSchema);
