@@ -25,10 +25,10 @@ module.exports = {
 
 
   async listar(req, res) {
-    const { empresa } = req.body;
+    const { cnpj } = req.param;
 
     let atendimento = await Conta.find({
-        empresa
+        cnpj
     });
 
     return res.json(atendimento);
