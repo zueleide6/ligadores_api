@@ -51,17 +51,11 @@ module.exports = {
   },
   async listar(req, res) {
     const { banco } = req.query; // Captura o banco da query string
+
+    console.log("Banco que recebi:"+banco)
   
-    const empresas = await Empresa.find(banco ? { banco } : {});
+    const empresas = await Empresa.find(banco);
     return res.json(empresas);
-  },
-  async listarBancos(req, res) {
-    try {
-      const bancos = await Empresa.distinct('banco'); // 'banco' é o campo do qual você quer os valores distintos
-      return res.json(bancos);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
-  },
+  }
   
 };
