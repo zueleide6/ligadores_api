@@ -4,17 +4,17 @@ const Atendimento = require("../models/Atendimentos");
 module.exports = {
 
   async criar(req, res) {
-    const { empresaId } = req.params; // Extrai o empresaId dos parâmetros da rota
+    const { cnpj } = req.params; // Extrai o empresaId dos parâmetros da rota
     const { score, status, Anotacao } = req.body;
 
     // Verifica se a empresa existe
-    const empresa = await Empresa.findById(empresaId);
+    const empresa = await Empresa.findById(cnpj);
     if (!empresa) {
       return res.status(404).send({ error: "Empresa não encontrada" });
     }
 
     const atendimento = await Atendimento.create({
-      empresa: empresaId,
+      cnpj,
       score,
       status,
       Anotacao,
