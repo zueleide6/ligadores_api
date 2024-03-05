@@ -1,0 +1,20 @@
+const express = require("express");
+const EmpresaController = require("./controllers/EmpresaController");
+const AtendimentoController = require("./controllers/AtendimentoController");
+const processaCNPJs = require("./ProcessaCNPJ");
+
+const routes = express.Router();
+
+// routes.post("/sessions", SessionController.store);
+routes.post("/cnpj", processaCNPJs.processaCNPJs);
+
+routes.get("/empresa", EmpresaController.listar);
+routes.post("/empresa", EmpresaController.criar);
+routes.get("/empresa/:empresa_id", EmpresaController.visualizar);
+routes.get('/empresa/bancos', EmpresaController.listarBancos);
+
+
+routes.post("/empresa/:empresa_id/atendimento", AtendimentoController.criar);
+routes.get("/empresa/:empresa_id/atendimento", AtendimentoController.listar);
+
+module.exports = routes;
