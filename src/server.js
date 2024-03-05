@@ -1,5 +1,4 @@
 const express = require('express');
-const fileUpload = require('express-fileupload');
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -14,7 +13,6 @@ mongoose.connect(
     origin: '*'
 }));
 
-app.use(fileUpload());
 
 app.use(express.json());
 app.use(routes);
