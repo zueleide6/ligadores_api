@@ -50,11 +50,11 @@ module.exports = {
     }
   },
   async listar(req, res) {
-    const { banco } = req.query; // Captura o banco da query string
+    //const { banco } = req.query;  Captura o banco da query string
 
-    console.log("Banco que recebi:"+banco)
+    //console.log("Banco que recebi:"+banco)
   
-    const empresas = await Empresa.find(banco);
+    const empresas = await Empresa.find();
     return res.json(empresas);
   }
   
