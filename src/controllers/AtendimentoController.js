@@ -27,10 +27,6 @@ module.exports = {
 
   async listar(req, res) {
     const { cnpj } = req.params;
-
-
-    console.log("AtendimentoController Listar cnpj:"+cnpj)
-    
     let atendimento = await Atendimento.find({ cnpj:cnpj })
     console.log("AtendimentoController Listar atendimento:"+atendimento)
 
