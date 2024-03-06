@@ -24,7 +24,7 @@ const corsOptions = {
   optionsSuccessStatus: 204 // Algumas versões antigas de navegadores (IE11, alguns Smart TVs) confundem 204 com erro
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 mongoose.connect(
     "mongodb+srv://dopamina:Dopamina123@cluster0.2v3bl7g.mongodb.net/port"
