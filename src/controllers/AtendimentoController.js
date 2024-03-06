@@ -14,7 +14,7 @@ module.exports = {
     console.log("AtendimentoController CRIAR Anotacao:"+Anotacao)
 
     const atendimento = await Atendimento.create({
-      cnpj,
+      cnpj:empresa.cnpj,
       score,
       status,
       Anotacao,
@@ -26,7 +26,13 @@ module.exports = {
 
   async listar(req, res) {
     const { cnpj } = req.params;
-    let atendimento = await Atendimento.find({ cnpj:cnpj })
+
+    const empresa = await Empresa.find(cnpj);
+    if (!empresa) {
+      return res.status(404).send({ error: "Empresa não encontrada" });
+    }
+    
+    let atendimento = await Atendimento.find({ cnpj:empresa.cnpj })
 
     return res.json(atendimento);
   }
