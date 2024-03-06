@@ -5,8 +5,23 @@ const app = express();
 const cors = require("cors");
 
 const corsOptions = {
-  origin: 'https://starfish-app-s27ho.ondigitalocean.app', // ou '*' para permitir todos os domínios
-  allowedHeaders: ['Content-Type', 'Authorization'] // Adicione aqui todos os cabeçalhos que suas requisições utilizam
+  origin: 'https://starfish-app-s27ho.ondigitalocean.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'Accept',
+    'Origin',
+    'User-Agent',
+    'DNT',
+    'Cache-Control',
+    'Keep-Alive',
+    'X-Requested-With',
+    'If-Modified-Since',
+    'X-CSRF-Token' // Adicione se estiver utilizando tokens CSRF
+  ],
+  credentials: true,
+  optionsSuccessStatus: 204 // Algumas versões antigas de navegadores (IE11, alguns Smart TVs) confundem 204 com erro
 };
 
 app.use(cors(corsOptions));
