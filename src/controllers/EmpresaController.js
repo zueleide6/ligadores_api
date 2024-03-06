@@ -29,7 +29,7 @@ module.exports = {
     const { cnpj } = req.params;
     
     const empresa = await Empresa.findOne({ cnpj })
-    =
+    
     if (!empresa) {
       return res.status(404).json({ error: "Empresa não encontrada" });
     }
@@ -38,7 +38,7 @@ module.exports = {
   },
   async listar(req, res) {
 
-    const empresas = await     Empresa.find()
+    const empresas = await Empresa.find()
 
     return res.json(empresas);
   }
