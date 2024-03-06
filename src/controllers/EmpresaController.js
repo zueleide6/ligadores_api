@@ -40,8 +40,8 @@ module.exports = {
     }
 
     // O atendimento mais recente estará disponível em `empresa.atendimentos[0]`, se existir
-    const status = empresa.atendimentos[0]?.status || 'Não Disponível';
-    const score = empresa.atendimentos[0]?.score || 'Não Disponível';
+    const status = empresa.atendimentos?.length > 0 ? empresa.atendimentos[0].status : 'Não Disponível';
+    const score = empresa.atendimentos?.length > 0 ? empresa.atendimentos[0]?.score || 'Não Disponível';
 
     // Atualize o objeto empresa com os novos campos para status e score
     empresa.status = status;
