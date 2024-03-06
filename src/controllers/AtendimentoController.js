@@ -12,6 +12,7 @@ module.exports = {
     if (!empresa) {
       return res.status(404).send({ error: "Empresa não encontrada" });
     }
+    console.log("AtendimentoController CRIAR Anotacao:"+Anotacao)
 
     const atendimento = await Atendimento.create({
       cnpj,
