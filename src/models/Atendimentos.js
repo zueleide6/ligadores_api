@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const AtendimentoSchema = {
   data: { type: Date, default: Date.now, index: true },
-  cnpj: { type: mongoose.Schema.Types.ObjectId, ref: "Empresa", index: true },
+  cnpj: String,
   score: { type: Number, default: 0 },  
   status:{
     type: String,
