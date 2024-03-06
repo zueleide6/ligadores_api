@@ -16,7 +16,7 @@ const EmpresaSchema = {
   municipio: String,
   estado: String,
   atividadePrincipal: String,
-  quadroSocietario: String
+  quadroSocietario: String,
 };
 
 module.exports = mongoose.model("Empresa", EmpresaSchema);
