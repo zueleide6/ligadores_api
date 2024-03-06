@@ -27,22 +27,27 @@ module.exports = {
   },
   async visualizar(req, res) {
     const { cnpj } = req.params;
+    
+    const empresa = await Empresa.findOne({ cnpj })
+      .populate({
+        path: 'atendimentos',
+        options: { sort: { 'data': -1 }, limit: 1 } // Apenas o mais recente atendimento
+      })
+      .lean();
 
-const empresa = await Empresa.findOne({ cnpj }).lean(); // Use lean para eficiência, se você não precisar de um documento do Mongoose
+    if (!empresa) {
+      return res.status(404).json({ error: "Empresa não encontrada" });
+    }
 
-      if (!empresa) {
-        return res.status(404).json({ error: "Empresa não encontrada" });
-      }
+    // O atendimento mais recente estará disponível em `empresa.atendimentos[0]`, se existir
+    const status = empresa.atendimentos[0]?.status || 'Não Disponível';
+    const score = empresa.atendimentos[0]?.score || 'Não Disponível';
 
-      // Buscar o atendimento mais recente para essa empresa
-      const ultimoAtendimento = await Atendimento.findOne({ empresa: empresa._id })
-        .sort({ data: -1 }) // Ordena por data decrescente, para obter o mais recente
-        .lean(); // Use lean para eficiência
+    // Atualize o objeto empresa com os novos campos para status e score
+    empresa.status = status;
+    empresa.score = score;
 
-      // Adicionando o último atendimento ao objeto da empresa
-      empresa.ultimoAtendimento = ultimoAtendimento;
-
-      return res.json(empresa);
+    return res.json(empresa);
   },
   async listar(req, res) {
 
